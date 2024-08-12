@@ -9,11 +9,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { Movie } from '../shared/models/movie.model';
 import { ArrayPipe } from '../shared/pipes/array.pipe';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-movie-details',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, BudgetPipe, DurationPipe, ReactiveFormsModule, ArrayPipe],
+  imports: [HttpClientModule, CommonModule, BudgetPipe, DurationPipe, ReactiveFormsModule, ArrayPipe, MatIconModule],
   providers: [MoviesService, CurrencyPipe],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css'
