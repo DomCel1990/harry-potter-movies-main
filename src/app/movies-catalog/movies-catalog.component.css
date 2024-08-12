@@ -1,0 +1,7 @@
+.sub-title {
+    font-size: 10px;
+    display: flex;
+    gap: 3%;
+    margin-top: -15px;
+    font-weight: initial;
+}
