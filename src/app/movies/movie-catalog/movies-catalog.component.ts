@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { MoviesListComponent } from './movies-list/movies-list.component';
-import { Movie } from '../shared/models/movie.model';
 import { MoviesService } from '../shared/services/movie.service';
+import { MovieList } from '../shared/models/movie-list.model';
 
 @Component({
   selector: 'app-movies-catalog',
@@ -17,7 +17,7 @@ import { MoviesService } from '../shared/services/movie.service';
   styleUrl: './movies-catalog.component.css'
 })
 export class MoviesCatalogComponent implements OnInit{
-  movies$: Observable<Movie[]>;
+  movies$: Observable<MovieList[]>;
   formFilter: FormGroup;
 
   private moviesService = inject(MoviesService);

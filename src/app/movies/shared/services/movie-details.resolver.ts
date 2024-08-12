@@ -13,7 +13,7 @@ export class MovieDetailsResolver implements Resolve<Movie> {
 
   private moviesService = inject(MoviesService);
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Movie> {
+  resolve(route: ActivatedRouteSnapshot): Observable<Movie> {
     
     const movieId = route.paramMap.get('movieId');
 

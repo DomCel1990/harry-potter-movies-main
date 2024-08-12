@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { BudgetPipe } from '../../shared/pipes/budget.pipe';
 import { DurationPipe } from '../../shared/pipes/duration.pipe';
-import { Movie } from '../../shared/models/movie.model';
+import { MovieList } from '../../shared/models/movie-list.model';
 
 @Component({
   selector: 'app-movies-list',
@@ -15,7 +15,7 @@ import { Movie } from '../../shared/models/movie.model';
   styleUrl: './movies-list.component.css'
 })
 export class MoviesListComponent implements OnChanges{
-  @Input() movies: Movie[];
+  @Input() movies: MovieList[];
 
   private router = inject(Router);
 
