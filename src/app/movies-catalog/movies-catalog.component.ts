@@ -7,6 +7,7 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { BudgetPipe } from '../shared/pipes/budget.pipe';
 import { DurationPipe } from '../shared/pipes/duration.pipe';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies-catalog',
@@ -22,6 +23,7 @@ export class MoviesCatalogComponent implements OnInit{
 
   private moviesService = inject(MoviesService);
   private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.movies$ = this.moviesService.getMovies();
@@ -39,10 +41,9 @@ export class MoviesCatalogComponent implements OnInit{
       this.movies$ = this.moviesService.getMovies(form.title, form.release_year);
     });
   }
-  
+
   onDetails(id: string){
-    console.log(id);
-    
+    this.router.navigate(['movies', id]);
   }
 
 }

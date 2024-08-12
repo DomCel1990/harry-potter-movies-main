@@ -16,4 +16,8 @@ export class MoviesService {
                       movie.title.toLowerCase().includes(title.toLowerCase()) && (year ? movie.release_date.startsWith(year) : true))
                     ));
     }
+
+    getMovieById(id: string) {
+        return this.http.get<Movie>('/movies/' + id);
+    }
 }
