@@ -6,11 +6,15 @@ import { Movie } from "../models/movie.model";
 import { MoviesService } from "./movie.service";
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MovieDetailsResolver implements Resolve<Movie> {
+
   private moviesService = inject(MoviesService);
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Movie> {
+    
     const movieId = route.paramMap.get('movieId');
 
     return this.moviesService.getMovieById(movieId);

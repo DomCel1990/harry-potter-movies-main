@@ -4,8 +4,11 @@ import { map } from "rxjs";
 
 import { Movie } from "../models/movie.model";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MoviesService {
+    
     private http = inject(HttpClient);
 
     getMovies(title = '', year = '') {

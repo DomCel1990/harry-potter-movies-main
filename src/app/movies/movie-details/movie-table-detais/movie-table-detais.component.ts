@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+
 import { Movie } from '../../shared/models/movie.model';
 import { BudgetPipe } from '../../shared/pipes/budget.pipe';
 import { DurationPipe } from '../../shared/pipes/duration.pipe';
 import { ArrayPipe } from '../../shared/pipes/array.pipe';
-import { CurrencyPipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-movie-table-detais',

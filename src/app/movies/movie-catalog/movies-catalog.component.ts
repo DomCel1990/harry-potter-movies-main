@@ -1,29 +1,28 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
-import { MoviesService } from '../shared/services/movie.service';
 import { Observable } from 'rxjs';
-import { Movie } from '../shared/models/movie.model';
-import { CommonModule, CurrencyPipe } from '@angular/common';
-import { BudgetPipe } from '../shared/pipes/budget.pipe';
-import { DurationPipe } from '../shared/pipes/duration.pipe';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+
+import { MoviesListComponent } from './movies-list/movies-list.component';
+import { Movie } from '../shared/models/movie.model';
+import { MoviesService } from '../shared/services/movie.service';
 
 @Component({
   selector: 'app-movies-catalog',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, BudgetPipe, DurationPipe, ReactiveFormsModule],
-  providers: [MoviesService, CurrencyPipe],
+  imports: [HttpClientModule, CommonModule, ReactiveFormsModule, MoviesListComponent],
+  providers: [MoviesService],
   templateUrl: './movies-catalog.component.html',
   styleUrl: './movies-catalog.component.css'
 })
 export class MoviesCatalogComponent implements OnInit{
-  movies$!: Observable<Movie[]>;
-  formFilter!: FormGroup;
+  movies$: Observable<Movie[]>;
+  formFilter: FormGroup;
 
   private moviesService = inject(MoviesService);
   private formBuilder = inject(FormBuilder);
-  private router = inject(Router);
+
 
   ngOnInit(): void {
     this.movies$ = this.moviesService.getMovies();
@@ -40,10 +39,6 @@ export class MoviesCatalogComponent implements OnInit{
     this.formFilter.valueChanges.subscribe(form => {
       this.movies$ = this.moviesService.getMovies(form.title, form.release_year);
     });
-  }
-
-  onDetails(id: string){
-    this.router.navigate(['movies', id]);
   }
 
 }

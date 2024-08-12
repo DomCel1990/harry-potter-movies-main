@@ -1,7 +1,4 @@
 import { Routes } from '@angular/router';
-import { MoviesCatalogComponent } from './movies-catalog/movies-catalog.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { MovieDetailsResolver } from './shared/services/movie-details.resolver';
 
 export const routes: Routes = [
     {
@@ -10,14 +7,8 @@ export const routes: Routes = [
         pathMatch: 'full'
     },
     {
-    path: 'movies',
-    component: MoviesCatalogComponent,
-    },
-    {
-        path: 'movies/:movieId',
-        component: MovieDetailsComponent,
-        resolve: {
-            movie: MovieDetailsResolver,
-        }
+        path: 'movies',
+        loadChildren: () => import('./movies/movie.routes')
+            .then(routes => routes.MOVIE_ROUTES)
     }
 ];

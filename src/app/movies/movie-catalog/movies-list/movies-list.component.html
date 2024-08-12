@@ -1,0 +1,20 @@
+<ul *ngFor="let movie of movies">
+    <li>
+        <div style="display: flex; justify-content: space-between">
+            <div style="font-weight: bold; width: 70%; display: grid;">
+            {{movie.title}}
+                <div
+                class="sub-title">
+                    <span>Relese Date: {{movie.release_date}}</span>
+                    <span>Budget: {{movie.budget | budget }}</span>
+                    <span>Duration: {{movie.duration | duration}}</span>
+                </div>
+            </div>
+            <button
+            style="border: none; cursor: pointer;"
+            type="button"
+            (click)="onDetails(movie.id)"
+            >Details</button>
+        </div>
+    </li>
+</ul>
