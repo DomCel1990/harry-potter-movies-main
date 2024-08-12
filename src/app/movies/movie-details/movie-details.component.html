@@ -1,0 +1,20 @@
+<div class="container">
+    <ng-container *ngIf="movie$ | async as movie">
+      <button style="display: flex;" (click)="onBack()">
+        <mat-icon>house</mat-icon>
+        Back
+      </button>
+      <h1>
+        {{ movie.title }}
+      </h1>
+      <div style="display: flex">
+        <img style="max-width: 200px" [src]="movie.poster" [alt]="movie.poster" />
+        <p><span style="font-weight: bold">Summary: </span>{{ movie.summary }}</p>
+      </div>
+  
+      <p class="details">Details</p>
+
+        <app-movie-table-detais [movie]="movie"></app-movie-table-detais>
+
+    </ng-container>
+  </div>
